@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const CreateSong = (props) => {
   const [title, setTitle] = useState("");
@@ -56,7 +56,7 @@ const CreateSong = (props) => {
         <div>
           <label>Release Date</label>
           <input
-            type="text"
+            type="date"
             value={release_date}
             onChange={(event) => setRelease_Date(event.target.value)}
           ></input>
@@ -74,7 +74,7 @@ const CreateSong = (props) => {
           <input
             type="text"
             value={likes}
-            onChange={(event) => setLikes(event.target.value)}
+            onChange={(event) => setLikes(parseFloat(event.target.value))}
           ></input>
           <button type='submit'>Create a Song</button>
         </div>
