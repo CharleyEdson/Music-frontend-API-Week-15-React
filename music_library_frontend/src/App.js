@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Title from './Title/Title';
 import "./App.css";
+import DisplayMusic from './DisplayMusic/DisplayMusic';
+import CreateSong from './CreateSong/CreateSong';
+import MusicMapper from './MusicMapper/MusicMapper';
 
 function App() {
 
@@ -9,13 +12,15 @@ function App() {
     {title: "Colder Weather", artist: "Zac Brown Band", album: "You Get What You Give", release_date: "05-03-2010", genre: "Country", likes: 0},
  ]);
 
-  useEffect(() => {
-    getAllSongs();
+  
 
   function addNewSong(song){
     let tempsongs = [song, ...songs];
     setSongs(tempsongs);
   }
+
+  useEffect(() => {
+    getAllSongs();
 
   },[]);
 
@@ -29,6 +34,9 @@ function App() {
       <div className='Title'>
       <Title />
       </div>
+      <MusicMapper musicArray={songs} />
+      <CreateSong addNewSong={addNewSong} idNum={songs.length} />
+      
     </div>
   );
 }

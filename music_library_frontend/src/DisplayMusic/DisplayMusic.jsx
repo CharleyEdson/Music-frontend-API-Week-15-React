@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
 
-const songPresenter = ({song}) => {
+const DisplayMusic = ({song}) => {
     
+    const [likeButton, setLikeButton] = useState(song.likes) // When I click the like button, it doesn't show 1, but shows 2 and after. Need to make this an API request to 'put' a change to increment.'
     
     return ( 
-        <div>
-            <div></div>
-        </div>
+        <tr>
+                <td>{song.title}</td>
+                <td>{song.artist}</td>
+                <td>{song.album}</td>
+                <td>{song.release_date}</td>
+                <td>{song.genre}</td>
+                <td>{song.likes}</td>
+                <div><button type='submit' onClick={()=> setLikeButton(song.likes ++)}  style={{ cursor: "pointer" }}>Like</button></div>
+        </tr>
 
     );
 }
  
-export default songPresenter;
+export default DisplayMusic;
