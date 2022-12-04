@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Title from "./Title/Title";
 import "./App.css";
-import DisplayMusic from "./DisplayMusic/DisplayMusic";
 import CreateSong from "./CreateSong/CreateSong";
 import MusicMapper from "./MusicMapper/MusicMapper";
+import SearchBar from "./SearchBar/SearchBar";
 
 function App() {
   const [songs, setSongs] = useState([
@@ -26,10 +26,10 @@ function App() {
     },
   ]);
 
-  function addNewSong(song) {
-    let tempsongs = [song, ...songs];
-    setSongs(tempsongs);
-  }
+  // function addNewSong(song) {
+  //   let tempsongs = [song, ...songs];
+  //   setSongs(tempsongs);
+  // }
 
   useEffect(() => {
     getAllSongs();
@@ -40,15 +40,23 @@ function App() {
     setSongs(response.data);
   }
 
+  async function createASong(newSong) {
+    let response = await axios.post("http://127.0.0.1:8000/music/", newSong)
+    if(response.status === 201){
+      await getAllSongs()
+    }
+  }
+
   return (
     <div>
       
           <Title />
+          {/* <SearchBar searchedItem={searchedItem}/> */}
           <div className="border-box">
           <MusicMapper musicArray={songs} />
           </div>
           <br></br>
-          <CreateSong addNewSong={addNewSong} idNum={songs.length} />
+          <CreateSong addNewSong={createASong} idNum={songs.length} />
 
 
         <div className="Title"></div>
