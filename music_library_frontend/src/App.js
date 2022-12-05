@@ -42,7 +42,9 @@ function App() {
     }
   }
 
-  function searchedItem(){
+  function searchedItem(searchQuery){
+    let tempSongs = [songs.filter(song=> songs.artist.includes(searchQuery))]
+    setSongs(tempSongs);
     
   }
 

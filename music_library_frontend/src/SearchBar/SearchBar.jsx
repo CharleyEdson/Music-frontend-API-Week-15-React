@@ -17,12 +17,12 @@ const SearchBar = ({searchedItem}, {songs}) => {
     function onChange(event) {
         event.preventDefault();
 
-    let searchQuery = {
+    let newQuery = {
         searchedItem: searchQuery
     };
     
     onChange(event)
-        setSearchQuery(event.target.value);
+        setSearchQuery(newQuery);
     
     }
     
@@ -32,8 +32,8 @@ const SearchBar = ({searchedItem}, {songs}) => {
       
         <div>
             <label>Search</label>
-            <input type='text' value={searchQuery} onChange={onChange}>
-            {/* <input type='text' value={userInput} onChange={(event) => setUserInput(event.target.value)} onfocus="this.value=''" > */}
+            
+            <input type='text' value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} onfocus="this.value=''" >
             </input>
 
         </div>
