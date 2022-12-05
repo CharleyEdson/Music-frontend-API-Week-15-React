@@ -1,7 +1,8 @@
 import React from 'react';
 import DisplayMusic from '../DisplayMusic/DisplayMusic';
+import SearchBar from '../SearchBar/SearchBar';
 
-const MusicMapper = ({musicArray}) => {
+const MusicMapper = ({musicArray}, {userInput}) => {
     let tempArray = [...musicArray]
     return (  
         <div>
@@ -17,7 +18,7 @@ const MusicMapper = ({musicArray}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {tempArray.map(song => <DisplayMusic key = {song.id} song = {song}/>)}
+                {tempArray.filter(song => song[song.artist].includes({userInput})).map(song => <DisplayMusic key = {song.id} song = {song}/>)}
                 </tbody>
             </table>
             

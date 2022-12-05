@@ -26,11 +26,6 @@ function App() {
     },
   ]);
 
-  // function addNewSong(song) {
-  //   let tempsongs = [song, ...songs];
-  //   setSongs(tempsongs);
-  // }
-
   useEffect(() => {
     getAllSongs();
   }, []);
@@ -41,26 +36,27 @@ function App() {
   }
 
   async function createASong(newSong) {
-    let response = await axios.post("http://127.0.0.1:8000/music/", newSong)
-    if(response.status === 201){
-      await getAllSongs()
+    let response = await axios.post("http://127.0.0.1:8000/music/", newSong);
+    if (response.status === 201) {
+      await getAllSongs();
     }
+  }
+
+  function searchedItem(){
+    
   }
 
   return (
     <div>
-      
-          <Title />
-          {/* <SearchBar searchedItem={searchedItem}/> */}
-          <div className="border-box">
-          <MusicMapper musicArray={songs} />
-          </div>
-          <br></br>
-          <CreateSong addNewSong={createASong} idNum={songs.length} />
+      <Title />
+      <SearchBar userInput={searchedItem} songs={songs}/>
+      <div className="border-box">
+        <MusicMapper musicArray={songs} />
+      </div>
+      <br></br>
+      <CreateSong addNewSong={createASong} idNum={songs.length} />
 
-
-        <div className="Title"></div>
-
+      <div className="Title"></div>
     </div>
   );
 }
