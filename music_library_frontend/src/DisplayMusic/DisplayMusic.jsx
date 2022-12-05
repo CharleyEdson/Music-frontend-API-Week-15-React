@@ -13,7 +13,7 @@ const DisplayMusic = ({song}) => {
                 <td>{song.release_date}</td>
                 <td>{song.genre}</td>
                 <td>{song.likes}</td>
-                <div><button type='submit' onClick={()=> setLikeButton(song.likes ++)}  style={{ cursor: "pointer" }}>Like</button></div>
+                <td><button type='submit' onClick={()=> setLikeButton(song.likes ++)}  style={{ cursor: "pointer" }}>Like</button></td>
         </tr>
 
     );

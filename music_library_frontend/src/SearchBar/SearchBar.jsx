@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 
-const SearchBar = ({searchedItem}, {songs}) => {
+const SearchBar = (props) => {
 
 //take a step back, how do I ask what I'm trying to do?
 //I'm trying to take in a filter search, in an input box.
@@ -12,30 +12,37 @@ const SearchBar = ({searchedItem}, {songs}) => {
 //Can I pass down the songs list, and have the search filter, filter and map over all the songs, and then re render if it changes?
 
     const [searchQuery, setSearchQuery] = useState("")
-    const [filteredSearchResults, setFilteredSearchResults] = useState(songs)
+  
 
-    function onChange(event) {
+    function handleSubmit(event){
         event.preventDefault();
 
-    let newQuery = {
-        searchedItem: searchQuery
-    };
-    
-    onChange(event)
-        setSearchQuery(newQuery);
-    
-    }
-    
+    let response = props.songs.filter((song) => {
+        if (song.title.includes(searchQuery) || 
+        song.artist.includes(searchQuery) ||
+        song.album.includes(searchQuery) || 
+        song.genes.includes(searchQuery)
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    });
+    props.setSongs(response)
+}
 
     return ( 
     <div>
       
         <div>
+            <form onSubmit={handleSubmit}>
             <label>Search</label>
             
-            <input type='text' value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} onfocus="this.value=''" >
+            <input type='text' value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} >
             </input>
-
+            <button type='submit'>Search</button>
+            </form>
         </div>
     
     </div> );

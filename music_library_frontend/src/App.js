@@ -7,24 +7,7 @@ import MusicMapper from "./MusicMapper/MusicMapper";
 import SearchBar from "./SearchBar/SearchBar";
 
 function App() {
-  const [songs, setSongs] = useState([
-    {
-      title: "BlackBird",
-      artist: "The Beatles",
-      album: "The Beatles",
-      release_date: "05-03-1969",
-      genre: "Folk",
-      likes: 0,
-    },
-    {
-      title: "Colder Weather",
-      artist: "Zac Brown Band",
-      album: "You Get What You Give",
-      release_date: "05-03-2010",
-      genre: "Country",
-      likes: 0,
-    },
-  ]);
+  const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     getAllSongs();
@@ -42,18 +25,13 @@ function App() {
     }
   }
 
-  function searchedItem(searchQuery){
-    let tempSongs = [songs.filter(song=> songs.artist.includes(searchQuery))]
-    setSongs(tempSongs);
-    
-  }
 
   return (
     <div>
       <Title />
-      <SearchBar userInput={searchedItem} songs={songs}/>
+      <SearchBar setSongs={setSongs} songs={songs}/>
       <div className="border-box">
-        <MusicMapper musicArray={songs} />
+        <MusicMapper songs={songs} />
       </div>
       <br></br>
       <CreateSong addNewSong={createASong} idNum={songs.length} />

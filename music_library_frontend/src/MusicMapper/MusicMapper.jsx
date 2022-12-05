@@ -1,9 +1,8 @@
 import React from 'react';
 import DisplayMusic from '../DisplayMusic/DisplayMusic';
-import SearchBar from '../SearchBar/SearchBar';
 
-const MusicMapper = ({musicArray}, {searchQuery}) => {
-    let tempArray = [...musicArray]
+const MusicMapper = (props) => {
+
     return (  
         <div>
             <table>
@@ -18,7 +17,7 @@ const MusicMapper = ({musicArray}, {searchQuery}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {tempArray.filter(song => song[song.artist].includes({searchQuery})).map(song => <DisplayMusic key = {song.id} song = {song}/>)}
+                {props.songs.map(song => <DisplayMusic key = {song.id} song = {song}/>)}
                 </tbody>
             </table>
             
@@ -29,3 +28,5 @@ const MusicMapper = ({musicArray}, {searchQuery}) => {
 }
  
 export default MusicMapper;
+
+//filter(song => song[song.artist].includes({searchQuery})).
