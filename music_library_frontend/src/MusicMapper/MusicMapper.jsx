@@ -29,4 +29,4 @@ const MusicMapper = (props) => {
  
 export default MusicMapper;
 
-//filter(song => song[song.artist].includes({searchQuery})).
+//Not each child has a unique key.

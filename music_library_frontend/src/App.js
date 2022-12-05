@@ -29,7 +29,7 @@ function App() {
   return (
     <div>
       <Title />
-      <SearchBar setSongs={setSongs} songs={songs}/>
+      <SearchBar setSongs={setSongs} songs={songs} resetButton={getAllSongs}/>
       <div className="border-box">
         <MusicMapper songs={songs} />
       </div>
