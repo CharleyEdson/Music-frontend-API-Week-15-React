@@ -19,9 +19,10 @@ const CreateSong = (props) => {
       release_date: release_date,
       genre: genre,
       likes: likes,
-      id: id + 1,
+      id: id + 4,
     };
     props.addNewSong(newSong);
+    console.log(newSong.id);
   }
 
 //Need to make all of these API 'Post' Calls.
