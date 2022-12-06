@@ -1,9 +1,9 @@
 import "./EditModal.jsx";
 import React, { useState, useEffect } from "react";
 import "../CreateSong/CreateSong";
-import CreateSong from "../CreateSong/CreateSong";
+import EditSong from "../EditSong/EditSong.jsx";
 
-const Modal = ({ open, onClose, song }) => {
+const Modal = ({ open, onClose, song, getAllSongs }) => {
   if (!open) return null;
 
   return (
@@ -17,7 +17,7 @@ const Modal = ({ open, onClose, song }) => {
           <div className="content"></div>
         </div>
         <div className="btnContainer">
-          <CreateSong />
+          <EditSong getAllSongs={getAllSongs} song={song}/>
         </div>
       </div>
     </div>

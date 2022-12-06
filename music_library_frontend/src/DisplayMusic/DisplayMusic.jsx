@@ -6,7 +6,7 @@ import Modal from '../EditModal/EditModal';
 
 
 
-const DisplayMusic = ({song}) => {
+const DisplayMusic = ({song, getAllSongs}) => {
 
     
    
@@ -30,7 +30,7 @@ const DisplayMusic = ({song}) => {
                 <td>{song.likes}</td>
                 <td><button type='submit' onClick={()=> setLikeButton(song.likes ++)}  style={{ cursor: "pointer" }}>Like</button></td>
                 <td><button onClick={()=> setShowModal(true)}>Edit</button></td>
-                <Modal open={showModal} song = {song} onClose={()=>setShowModal(false)}/>
+                <Modal open={showModal} song = {song} getAllSongs={getAllSongs} onClose={()=>setShowModal(false)}/>
                 
         </tr>
 

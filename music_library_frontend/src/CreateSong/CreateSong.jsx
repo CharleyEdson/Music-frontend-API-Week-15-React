@@ -19,7 +19,6 @@ const CreateSong = (props) => {
       release_date: release_date,
       genre: genre,
       likes: likes,
-      id: id + 4,
     };
     props.addNewSong(newSong);
     console.log(newSong.id);
@@ -75,7 +74,7 @@ const CreateSong = (props) => {
           <input
             type="text"
             value={likes}
-            onChange={(event) => setLikes(parseFloat(event.target.value))}
+            onChange={(event) => setLikes(parseInt(event.target.value))}
           ></input>
           <button type='submit'>Create a Song</button>
         </div>

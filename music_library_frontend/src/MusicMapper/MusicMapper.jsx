@@ -17,7 +17,7 @@ const MusicMapper = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {props.songs.map(song => <DisplayMusic key = {song.id} song = {song}/>)}
+                {props.songs.map(song => <DisplayMusic key = {song.id} getAllSongs={props.getAllSongs}  song = {song}/>)}
                 </tbody>
             </table>
             

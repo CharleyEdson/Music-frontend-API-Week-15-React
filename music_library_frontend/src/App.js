@@ -26,8 +26,6 @@ function App() {
   }
 
 
-  //Need to dynamically add in each songs id number at the end of this url.
-  // https://www.youtube.com/watch?v=OCbanXuKKtg
 
   async function editASong(song) {
     let response = await axios.put("http://127.0.0.1:8000/music/", song);
@@ -43,7 +41,7 @@ function App() {
       <Title />
       <SearchBar setSongs={setSongs} songs={songs} resetButton={getAllSongs}/>
       <div className="border-box">
-      <MusicMapper songs={songs} />
+      <MusicMapper songs={songs} getAllSongs={getAllSongs}/>
       </div>
       <br></br>
       <CreateSong addNewSong={createASong} idNum={songs.length} />
