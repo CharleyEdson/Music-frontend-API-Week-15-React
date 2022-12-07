@@ -5,7 +5,7 @@ const MusicMapper = (props) => {
 
     return (  
         <div>
-            <table>
+            <table className='table table-striped table-bordered table-hover '>
                 <thead>
                 <tr>
                     <th>Title</th>
