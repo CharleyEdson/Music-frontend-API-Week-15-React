@@ -10,16 +10,14 @@ const SearchBar = (props) => {
 
     let response = props.songs.filter((song) => {
       if (
-        song.title.includes(searchQuery) ||
-        song.artist.includes(searchQuery) ||
-        song.album.includes(searchQuery) ||
-        song.release_date.includes(searchQuery) ||
-        song.genre.includes(searchQuery)
+        song.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        song.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        song.album.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        song.release_date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        song.genre.toLowerCase().includes(searchQuery.toLowerCase())
       ) {
         return true;
-      } else {
-        return false;
-      }
+      } 
     });
     props.setSongs(response);
   }
